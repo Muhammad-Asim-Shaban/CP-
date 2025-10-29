@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long t;
+    cin>>t;
+    while(t--)
+    {
+        long long n,k;
+        cin>>n>>k;
+        vector<long long> a(n);
+        for(long long i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        long long ans=INT_MAX;
+        long long evenc=0;
+        for(long long i=0;i<n;i++)
+        {
+            if(a[i]%2==0)
+            {
+                evenc++;
+            }
+            if(a[i]%k==0)
+            {
+                ans=0;
+            }
+            ans=min(ans,(k-a[i]%k));
+        }
+        if(k==4)
+        {
+            if(evenc>=2)
+            {
+                ans=min(ans,0LL);
+            }
+            else if(evenc==1)
+            {
+                ans=min(ans,1LL);
+            }
+            else if(evenc==0)
+            {
+                ans=min(ans,2LL);
+            }
+        }
+        cout<<ans<<endl;
+
+    }
+}
